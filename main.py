@@ -15,8 +15,9 @@ def __main__():
         uid = subprocess\
             .run(cmd, shell=True, stdout=subprocess.PIPE)\
             .stdout\
-            .replace('\n', '')\
-            .decode('ascii')
+            .decode('ascii')\
+            .replace('\n', '')
+
 
         print(uid)
         count += 1

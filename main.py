@@ -12,7 +12,7 @@ def __main__():
     while 1:
         cmd = "nfc-list | grep UID | sed -e 's/ //g' -e 's/^.*://'"
         uid = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE).stdout
-        print(uid)
+        print(uid.decode('ascii'))
 
 if __name__ == '__main__':
     __main__()

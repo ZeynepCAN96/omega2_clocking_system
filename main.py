@@ -11,7 +11,7 @@ import subprocess
 def __main__():
     while 1:
         cmd = "nfc-list | grep UID | sed -e 's/ //g' -e 's/^.*://'"
-        uid = subprocess.check_output(cmd, shell=True).rstrip('\n')
+        uid = subprocess.run(cmd, capture_output=True)
         print(uid)
 
 if __name__ == '__main__':

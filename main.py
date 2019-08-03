@@ -12,10 +12,10 @@ def __main__():
     count = 0
     while count < 10:
         cmd = "nfc-list | grep UID | sed -e 's/ //g' -e 's/^.*://'"
-        uid = subprocess
-            .run(cmd, shell=True, stdout=subprocess.PIPE)
-            .stdout
-            .replace('\n', '')
+        uid = subprocess\
+            .run(cmd, shell=True, stdout=subprocess.PIPE)\
+            .stdout\
+            .replace('\n', '')\
             .decode('ascii')
 
         print(uid)

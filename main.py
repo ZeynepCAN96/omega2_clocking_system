@@ -9,10 +9,17 @@ import subprocess
 
 #constantly scan for rfid tag presence
 def __main__():
-    while 1:
+    count = 0
+    while count < 10:
         cmd = "nfc-list | grep UID | sed -e 's/ //g' -e 's/^.*://'"
-        uid = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE).stdout
-        print(uid.decode('ascii'))
+        uid = subprocess
+            .run(cmd, shell=True, stdout=subprocess.PIPE)
+            .stdout
+            .replace('\n', '')
+            .decode('ascii')
+
+        print(uid)
+        count += 1
 
 if __name__ == '__main__':
     __main__()

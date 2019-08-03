@@ -18,8 +18,11 @@ def __main__():
             .decode('ascii')\
             .replace('\n', '')
 
-
-        print(uid)
+        if(uid==''):
+            print('None')
+        else:
+            print(uid)
+            
         count += 1
 
 if __name__ == '__main__':

@@ -5,6 +5,9 @@
     opkg install python3-oled-exp
 """
 
+#Python Modules
+import time as t
+
 #OMEGA Modules
 from OmegaExpansion import oledExp
 
@@ -29,12 +32,12 @@ class Oled():
         if(self.oled_active):
             #display ok image and show it for 2 seconds
             oledExp.drawFromFile('img/ok.png')
-            time.sleep(2)
+            t.sleep(2)
             oledExp.clear()
 
             #write message and show it for 3 seconds
             oledExp.write("{} /n Clocking Time: {}".format(name, time))
-            time.sleep(3)
+            t.sleep(3)
             oledExp.clear()
 
             ##Turn off the screen

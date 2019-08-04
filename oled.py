@@ -17,7 +17,7 @@ class Oled():
         #check if oled is configured in config.py
         self.oled_active = Config.OLED_EXPANSION.value
 
-        if(oled_active):
+        if(self.oled_active):
             #Initialize the OLED Display
             oledExp.driverInit()
 
@@ -36,3 +36,6 @@ class Oled():
             oledExp.write("{} /n Clocking Time: {}".format(name, time))
             time.sleep(3)
             oledExp.clear()
+
+            ##Turn off the screen
+            oledExp.setDisplayPower(0)

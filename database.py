@@ -3,10 +3,12 @@
 #Python Modules
 import sqlite3
 from datetime import datetime
+import math
 
 #User Modules
 from config import Config
 from card import Card
+from oled import Oled
 
 class Database:
 
@@ -26,7 +28,7 @@ class Database:
         #Create table employee if doesn't exist
         self.conn.execute("""CREATE TABLE if not exists employee(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            card_uid TEXT,
+            card_uid TEXT UNIQUE,
             first_name TEXT,
             last_name TEXT,
             department_id INTEGER,
@@ -67,9 +69,10 @@ class Database:
         """Create a new employee in the database"""
 
         print("Put a card on the NFC Reader......")
-
         #Read card
         card = Card()
+        print("Card read successfully....")
+
         id = card.id
         first_name = input("Insert first name: ")
         last_name = input("Insert last name: ")
@@ -96,7 +99,8 @@ class Database:
         """Delete a register from the table given in the database"""
 
         id = input("Select the id to remove: ")
-        self.conn.execute("""DELETE FROM {} WHERE id={}""".format(table_name, id))
+        self.conn.execute("""DELETE FROM {} WHERE id={}""".\
+            format(table_name, id))
         self.conn.commit()
 
     def list_registers(self, table_name):
@@ -106,6 +110,60 @@ class Database:
         conn_select.execute("""SELECT * FROM {}""".format(table_name))
 
         return conn_select.fetchall()
+
+    def register_clocking_time(self, uid):
+        """Register clocking time for the user with card uid given"""
+
+        conn_select = self.conn.cursor()
+        rows = conn_select.execute("""\
+            SELECT id,\
+                first_name,\
+                last_name,\
+                working,\
+                updated_at\
+                FROM employee WHERE card_uid = ?""", (uid,)\
+            ).fetchone()
+
+        #Check if there is no employee with the given uid
+        if(rows==None):
+            print("Employee not found")
+            return 0
+
+        #Calculate delay from last clocking registered
+        last_clocking = datetime.strptime(rows[4], '%Y-%m-%d %H:%M:%S.%f')
+        now = datetime.now()
+        delay = now - last_clocking
+
+        #Check delay configured for clocking again
+        if(delay.seconds < Config.DELAY_MINUTES.value):
+            #duplicate entrie detected
+            print("You already registered your time, wait 5 minutes")
+
+        #Register new clocking time
+        else:
+            #change working status 1 -> 0 or 0 -> 1
+            working = 0 if rows[3] else 1
+
+            #Update working status in employees
+            self.conn.execute("""\
+                UPDATE employee\
+                SET working = ?, updated_at = ?\
+                WHERE id = ?""", (working, now, rows[0],)\
+                )
+            self.conn.commit()
+
+            #Save clocking time
+            self.conn.execute("""INSERT INTO timeclock\
+                VALUES (null,?,0,?)""",\
+                (\
+                    rows[0],\
+                    now,\
+                ))
+            self.conn.commit()
+
+            oled_screen = Oled()
+            oled_screen.msg_ok("{} {}".format(rows[0], rows[1]), now)
+            #print(working)
 
 
 def __main__():
@@ -120,9 +178,8 @@ def __main__():
     menu['4']="Create Employee"
     menu['5']="Delete Employee"
     menu['6']="List Employees"
-    menu['7']="Register Clocking Time"
-    menu['8']="Delete Clocking Register"
-    menu['9']="List Clocking Registers"
+    menu['7']="Delete Clocking Register"
+    menu['8']="List Clocking Registers"
     menu['0']="Exit"
 
     #loop asking user for an option
@@ -159,6 +216,8 @@ def __main__():
             list = db.list_registers("employee")
             for entry in list:
                 print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
+        elif selection == '7':
+            print(db.register_clocking_time('1234'))
         elif selection == '0':
             break
         else:
@@ -169,6 +228,3 @@ def __main__():
 
 if __name__ == '__main__':
     __main__()
-    #db.insert('3', 'Fabian', datetime.now())
-    #db.select(3)
-    #print(Config.DELAY_MINUTES.value)

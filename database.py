@@ -162,7 +162,7 @@ class Database:
             self.conn.commit()
 
             oled_screen = Oled()
-            oled_screen.msg_ok("{} {}".format(rows[0], rows[1]), now)
+            oled_screen.msg_ok("{} {}".format(rows[1], rows[2]), now)
             #print(working)
 
 

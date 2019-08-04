@@ -31,12 +31,13 @@ class Oled():
         #check if a oled is active
         if(self.oled_active):
             #display ok image and show it for 2 seconds
-            oledExp.drawFromFile('img/ok.png')
+            oledExp.drawFromFile(Config.OK_IMG.value)
             t.sleep(2)
             oledExp.clear()
 
             #write message and show it for 3 seconds
-            oledExp.write("{} /n Clocking Time: {}".format(name, time))
+            oledExp.write(name)
+            oledExp.write("Clocking Time: {}".format(time))
             t.sleep(3)
             oledExp.clear()
 

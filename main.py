@@ -15,22 +15,13 @@ from database import Database
 def __main__():
     """Open nfc reader continusly untill a card is read"""
 
-    # while True:
-    #     #Read card, the constructor will search for a card until it gets one
-    #     card = Card()
-    #     print(card.id)
-    #
-    #     break
-
     db = Database()
-    staff = db.register_clocking_time('0409bf32ed4c81')
 
+    while True:
+        #Read card, the constructor will search for a card until it gets one
+        card = Card()
+        db.register_clocking_time(card.id)
 
-
-    #print(staff['working'])
-
-
-
-
+    
 if __name__ == '__main__':
     __main__()

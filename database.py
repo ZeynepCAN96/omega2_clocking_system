@@ -126,7 +126,8 @@ class Database:
 
         #Check if there is no employee with the given uid
         if(rows==None):
-            print("Employee not found")
+            oled_screen = Oled()
+            oled_screen.msg_error("Employee not found")
             return 0
 
         #Calculate delay from last clocking registered
@@ -137,7 +138,12 @@ class Database:
         #Check delay configured for clocking again
         if(delay.seconds < Config.DELAY_MINUTES.value):
             #duplicate entrie detected
-            print("You already registered your time, wait 5 minutes")
+            oled_screen = Oled()
+            oled_screen.msg_error(\
+                "You already registered your time, wait {} seconds")\
+                .format(delay.seconds)
+
+            return 0
 
         #Register new clocking time
         else:
@@ -163,7 +169,8 @@ class Database:
 
             oled_screen = Oled()
             oled_screen.msg_ok("{} {}".format(rows[1], rows[2]), now)
-            #print(working)
+
+            return 1
 
 
 def __main__():

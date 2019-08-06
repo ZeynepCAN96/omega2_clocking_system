@@ -8,3 +8,4 @@ class Config(Enum):
     OLED_EXPANSION = 1 #1 = ON OR 0 = OFF (USE OLED EXPANSION)
     OK_IMG = "img/image_ok.lcd" #Path for OK img
     ERROR_IMG = "img/image_error.lcd" #Path for error img
+    ID_STOP_SYSTEM = "b5c6e7bb" #Card id to stop the system

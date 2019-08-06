@@ -141,7 +141,7 @@ class Database:
             oled_screen = Oled()
             oled_screen.msg_error(\
                 "You already registered your time, wait {} seconds"\
-                .format(delay.seconds))
+                .format(Config.DELAY_MINUTES.value-delay.seconds))
 
             return 0
 

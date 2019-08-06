@@ -10,6 +10,7 @@ import json
 #User Modules
 from card import Card
 from database import Database
+from config import Config
 
 #constantly scan for rfid tag presence
 def __main__():
@@ -20,8 +21,13 @@ def __main__():
     while True:
         #Read card, the constructor will search for a card until it gets one
         card = Card()
+
+        #break the loop if the card presented is the one configured to stop it
+        if(card.id == Config.ID_STOP_SYSTEM.value):
+            break
+
         db.register_clocking_time(card.id)
 
-    
+
 if __name__ == '__main__':
     __main__()

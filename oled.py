@@ -36,8 +36,7 @@ class Oled():
             oledExp.clear()
 
             #write message and show it for 3 seconds
-            oledExp.write(name)
-            oledExp.write("Clocking Time: {}".format(time))
+            oledExp.write("Name: {} - Clocking Time: {}".format(name, time))
             t.sleep(3)
             oledExp.clear()
 

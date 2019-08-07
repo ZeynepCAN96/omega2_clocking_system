@@ -73,7 +73,7 @@ class Database:
         card = Card()
         print("Card read successfully....")
 
-        id = card.id
+        card_uid = card.id
         first_name = input("Insert first name: ")
         last_name = input("Insert last name: ")
 
@@ -85,7 +85,7 @@ class Database:
         self.conn.execute("""INSERT INTO employee\
             VALUES (null,?,?,?,?,?,?,?)""",\
             (\
-                id,\
+                card_uid,\
                 first_name,\
                 last_name,\
                 department,\
@@ -136,41 +136,40 @@ class Database:
         delay = now - last_clocking
 
         #Check delay configured for clocking again
-        if(delay.seconds < Config.DELAY_MINUTES.value):
-            #duplicate entrie detected
+        if(delay.seconds < Config.DELAY_SECONDS.value):
+            #duplicate entry detected
             oled_screen = Oled()
             oled_screen.msg_error(\
                 "You already registered your time, wait {} seconds"\
-                .format(Config.DELAY_MINUTES.value-delay.seconds))
+                .format(Config.DELAY_SECONDS.value-delay.seconds))
 
             return 0
 
         #Register new clocking time
-        else:
-            #change working status 1 -> 0 or 0 -> 1
-            working = 0 if rows[3] else 1
+        #change working status 1 -> 0 or 0 -> 1
+        working = 0 if rows[3] else 1
 
-            #Update working status in employees
-            self.conn.execute("""\
-                UPDATE employee\
-                SET working = ?, updated_at = ?\
-                WHERE id = ?""", (working, now, rows[0],)\
-                )
-            self.conn.commit()
+        #Update working status in employees
+        self.conn.execute("""\
+            UPDATE employee\
+            SET working = ?, updated_at = ?\
+            WHERE id = ?""", (working, now, rows[0],)\
+            )
+        self.conn.commit()
 
-            #Save clocking time
-            self.conn.execute("""INSERT INTO timeclock\
-                VALUES (null,?,0,?)""",\
-                (\
-                    rows[0],\
-                    now,\
-                ))
-            self.conn.commit()
+        #Save clocking time
+        self.conn.execute("""INSERT INTO timeclock\
+            VALUES (null,?,0,?)""",\
+            (\
+                rows[0],\
+                now,\
+            ))
+        self.conn.commit()
 
-            oled_screen = Oled()
-            oled_screen.msg_ok("{} {}".format(rows[1], rows[2]), now)
+        oled_screen = Oled()
+        oled_screen.msg_ok("{} {}".format(rows[1], rows[2]), now)
 
-            return 1
+        return 1
 
 
 def __main__():
@@ -192,10 +191,14 @@ def __main__():
     #loop asking user for an option
     while True:
         options=menu.keys()
+
+        #print menu
         for entry in options:
             print("({}) - {}".format(entry, menu[entry]))
 
+        #ask user for an option
         selection=input("Please Select:")
+
         if selection =='1':
             db.create_department()
         elif selection == '2':

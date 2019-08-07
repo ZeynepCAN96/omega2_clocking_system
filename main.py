@@ -5,7 +5,6 @@ and the data is sent to a google spreadsheet
 """
 
 #Python Modules
-import json
 
 #User Modules
 from card import Card
@@ -14,7 +13,7 @@ from config import Config
 
 #constantly scan for rfid tag presence
 def __main__():
-    """Open nfc reader continusly untill a card is read"""
+    """Open nfc reader continusly until a card is read"""
 
     db = Database()
 

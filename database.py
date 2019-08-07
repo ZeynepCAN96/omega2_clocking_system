@@ -77,11 +77,8 @@ class Database:
         first_name = input("Insert first name: ")
         last_name = input("Insert last name: ")
  
-        """
-        list = self.list_registers("department")
-        for entry in list:
-            print(" {} - {}".format(*entry))
-            """
+        list_registers()
+        
         department = input("Insert department id: ")
 
         self.conn.execute("""INSERT INTO employee\

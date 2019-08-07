@@ -5,6 +5,7 @@ and the data is sent to a google spreadsheet
 """
 
 #Python Modules
+#Sena version
 
 #User Modules
 from card import Card

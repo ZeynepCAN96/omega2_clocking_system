@@ -76,10 +76,12 @@ class Database:
         card_uid = card.id
         first_name = input("Insert first name: ")
         last_name = input("Insert last name: ")
-
+ 
+        """
         list = self.list_registers("department")
         for entry in list:
             print(" {} - {}".format(*entry))
+            """
         department = input("Insert department id: ")
 
         self.conn.execute("""INSERT INTO employee\
@@ -110,7 +112,24 @@ class Database:
         conn_select.execute("""SELECT * FROM {}""".format(table_name))
 
         return conn_select.fetchall()
+    
+    
+    def print_registers(self):
+    
+        list = self.list_registers("department")
+        for entry in list:
+            print(" {} - {}".format(*entry))
 
+
+    def print_employee(self):
+    
+    
+        list = self.list_registers("employee")
+        for entry in list:
+            print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
+    
+            
+ 
     def register_clocking_time(self, uid):
         """Register clocking time for the user with card uid given"""
 
@@ -203,29 +222,21 @@ def __main__():
             db.create_department()
         elif selection == '2':
             #print list of all departments
-            list = db.list_registers("department")
-            for entry in list:
-                print(" {} - {}".format(*entry))
+            db.print_registers()
             #delete register
             db.delete_register("department")
         elif selection == '3':
-            list = db.list_registers("department")
-            for entry in list:
-                print(" {} - {}".format(*entry))
+            db.print_registers()
         elif selection == '4':
             db.create_employee()
         elif selection == '5':
             #print list of all employees
-            list = db.list_registers("employee")
-            for entry in list:
-                print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
+            db.print_employee()
             #delete register
             db.delete_register("employee")
         elif selection == '6':
             #print list of all employees
-            list = db.list_registers("employee")
-            for entry in list:
-                print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
+            db.print_employee()
         elif selection == '7':
             print(db.register_clocking_time('1234'))
         elif selection == '0':

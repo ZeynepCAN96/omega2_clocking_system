@@ -77,7 +77,8 @@ class Database:
         first_name = input("Insert first name: ")
         last_name = input("Insert last name: ")
  
-        self.print_registers()
+        #Print department
+        self.print_department()
         
         department = input("Insert department id: ")
 
@@ -111,8 +112,8 @@ class Database:
         return conn_select.fetchall()
     
     
-    def print_registers(self):
-    
+    def print_department(self):
+        """Print list of all departments in the database """
         list = self.list_registers("department")
         for entry in list:
             print(" {} - {}".format(*entry))
@@ -120,7 +121,7 @@ class Database:
 
     def print_employee(self):
     
-    
+        """Print list of all employees in the database """
         list = self.list_registers("employee")
         for entry in list:
             print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
@@ -219,11 +220,12 @@ def __main__():
             db.create_department()
         elif selection == '2':
             #print list of all departments
-            db.print_registers()
+            db.print_department()
             #delete register
             db.delete_register("department")
         elif selection == '3':
-            db.print_registers()
+            #print list of all departments
+            db.print_department()
         elif selection == '4':
             db.create_employee()
         elif selection == '5':

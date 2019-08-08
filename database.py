@@ -126,10 +126,10 @@ class Database:
         for entry in list:
             print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
 
-    def print_list_time_clocking(self, table_name):
+    def print_list_time_clocking(self, employee_table,timeclock_table):
 
         conn_select = self.conn.cursor()
-        conn_select.execute("""SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id""".format(table_name,table_name),table_name,table_name)
+        conn_select.execute("""SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id""".format(employee_table,timeclock_table,employee_table,timeclock_table)
 
         return conn_select.fetchall()
 
@@ -245,13 +245,13 @@ def __main__():
             db.print_employee()
         elif selection == '7':
 
-            db. print_list_time_clocking()
+            db. print_list_time_clocking("employee","timeclock)
             #delete register
             db.delete_register("timeclock")
 
             #print(db.register_clocking_time('1234'))
         elif selection == '8':
-              db. print_list_time_clocking()
+              db. print_list_time_clocking("employee","timeclock")
         elif selection == '0':
             break
         else:

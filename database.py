@@ -120,7 +120,6 @@ class Database:
 
 
     def print_employee(self):
-    
         """Print list of all employees in the database """
         list = self.list_registers("employee")
         for entry in list:

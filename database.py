@@ -77,7 +77,7 @@ class Database:
         first_name = input("Insert first name: ")
         last_name = input("Insert last name: ")
  
-        self.print_registers()
+        print_registers()
         
         department = input("Insert department id: ")
 

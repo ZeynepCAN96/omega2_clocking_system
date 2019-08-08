@@ -4,9 +4,6 @@ If a tag is found the uid is compared with a database
 and the data is sent to a google spreadsheet
 """
 
-#Python Modules
-#Sena version
-
 #User Modules
 from card import Card
 from database import Database

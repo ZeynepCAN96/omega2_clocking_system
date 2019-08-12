@@ -130,7 +130,7 @@ class Database:
     def list_clocking_time(self,table_name1,table_name2):
         """  """
         conn_select=self.conn.cursor()
-        conn_select.execute("""SELECT * FROM {} INNER JOIN {} ON {}.id={}.id""".format(table_name1,table_name2,table_name1,table_name2)
+        conn_select.execute("""SELECT * FROM {} INNER JOIN {} ON {}.id={}.id""".format(table_name1,table_name2,table_name1,table_name2))
                     
         return conn_select.fetchall()
 
@@ -256,7 +256,7 @@ def __main__():
             #delete clocking register
             db.delete_register("timeclock")
         elif selection == '8':
-            db.list_clocking_time("timeclock","employee")
+            db.print_clocking_time()
              
         elif selection == '0':
             break

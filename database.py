@@ -126,13 +126,18 @@ class Database:
         for entry in list:
             print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
 
-    def print_list_time_clocking(self, employee_table,timeclock_table):
+    def list_time_clocking(self, employee_table,timeclock_table):
 
-        conn_select_1 = self.conn.cursor()
-        conn_select_1.execute("""SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id""".format(employee_table,timeclock_table,employee_table,timeclock_table)
+        conn_select = self.conn.cursor()
+        conn_select.execute("""SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id""".format(employee_table,timeclock_table,employee_table,timeclock_table)
 
-        return conn_select_1.fetchall()
+        return conn_select.fetchall()
 
+    def print_time_clocking(self):
+        """Print list of all clocking time in the database """
+        list = self.list_time_clocking("employee","timeclock")
+        for entry in list:
+            print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
 
 
     def register_clocking_time(self, uid):
@@ -245,13 +250,13 @@ def __main__():
             db.print_employee()
         elif selection == '7':
 
-            db. print_list_time_clocking("employee","timeclock")
+            db.print_time_clocking("timeclock"):
             #delete register
             db.delete_register("timeclock")
 
             #print(db.register_clocking_time('1234'))
         elif selection == '8':
-              db. print_list_time_clocking("employee","timeclock")
+              db.print_time_clocking("timeclock"):
         elif selection == '0':
             break
         else:

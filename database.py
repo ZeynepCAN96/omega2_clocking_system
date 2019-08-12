@@ -135,7 +135,7 @@ class Database:
         return conn_select.fetchall()
 
     def print_clocking_time(self):
-        """ """
+        """Print list all employees with clocking time """
         list=self.list_clocking_time("timeclock","employee")
         for entry in list:
             print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))

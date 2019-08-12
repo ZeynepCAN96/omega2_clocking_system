@@ -115,6 +115,7 @@ class Database:
 
     def print_department(self):
         """Print list of all departments in the database """
+
         list = self.list_registers("department")
         for entry in list:
             print(" {} - {}".format(*entry))
@@ -122,11 +123,13 @@ class Database:
 
     def print_employee(self):
         """Print list of all employees in the database """
+
         list = self.list_registers("employee")
         for entry in list:
             print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
 
     def list_time_clocking(self, employee_table,timeclock_table):
+        """Return list all clocking times from the table given database"""
 
         conn_select = self.conn.cursor()
         conn_select.execute(\
@@ -141,6 +144,7 @@ class Database:
 
     def print_time_clocking(self):
         """Print list of all clocking time in the database """
+
         list = self.list_time_clocking("employee","timeclock")
         for entry in list:
             print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
@@ -255,14 +259,13 @@ def __main__():
             #print list of all employees
             db.print_employee()
         elif selection == '7':
-
+            #print list of all clococking times
             db.print_time_clocking()
             #delete register
             db.delete_register("timeclock")
-
-            #print(db.register_clocking_time('1234'))
         elif selection == '8':
-              db.print_time_clocking()
+            #print list of all clococking times
+             db.print_time_clocking()
         elif selection == '0':
             break
         else:

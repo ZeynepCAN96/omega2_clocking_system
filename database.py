@@ -129,7 +129,7 @@ class Database:
 
     def list_clocking_time(self,table_name1,table_name2):
         """  """
-        conn_select=self.conn.cursor(self,table_name1,table_name2)
+        conn_select=self.conn.cursor()
         conn_select.execute("""SELECT * FROM {} INNER JOIN {} ON {}.id={}.id""".format(table_name1,table_name2,table_name1,table_name2)
                     
         return conn_select.fetchall()

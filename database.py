@@ -131,7 +131,7 @@ class Database:
         conn_select = self.conn.cursor()
         conn_select.execute("""SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id""".format(employee_table,timeclock_table,employee_table,timeclock_table)
 
-        return conn_select
+        return conn_select.fetchall()
 
 
 
@@ -245,7 +245,7 @@ def __main__():
             db.print_employee()
         elif selection == '7':
 
-            db. print_list_time_clocking("employee","timeclock)
+            db. print_list_time_clocking("employee","timeclock")
             #delete register
             db.delete_register("timeclock")
 

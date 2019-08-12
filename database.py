@@ -128,10 +128,10 @@ class Database:
 
     def print_list_time_clocking(self, employee_table,timeclock_table):
 
-        conn_select = self.conn.cursor()
-        conn_select.execute("""SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id""".format(employee_table,timeclock_table,employee_table,timeclock_table)
+        conn_select_1 = self.conn.cursor()
+        conn_select_1.execute("""SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id""".format(employee_table,timeclock_table,employee_table,timeclock_table)
 
-        return conn_select.fetchall()
+        return conn_select_1.fetchall()
 
 
 

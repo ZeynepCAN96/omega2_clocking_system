@@ -76,10 +76,10 @@ class Database:
         card_uid = card.id
         first_name = input("Insert first name: ")
         last_name = input("Insert last name: ")
- 
+
         #Print department
         self.print_department()
-        
+
         department = input("Insert department id: ")
 
         self.conn.execute("""INSERT INTO employee\
@@ -103,6 +103,7 @@ class Database:
             format(table_name, id))
         self.conn.commit()
 
+
     def list_registers(self, table_name):
         """Return list all registers from the table given database"""
 
@@ -110,11 +111,11 @@ class Database:
         conn_select.execute("""SELECT * FROM {}""".format(table_name))
 
         return conn_select.fetchall()
-    
-    
+
+
     def print_department(self):
         """Print list of all departments in the database """
-        
+
         list = self.list_registers("department")
         for entry in list:
             print(" {} - {}".format(*entry))
@@ -122,26 +123,33 @@ class Database:
 
     def print_employee(self):
         """Print list of all employees in the database """
-        
+
         list = self.list_registers("employee")
         for entry in list:
             print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
 
-    def list_clocking_time(self,table_name1,table_name2):
-        """  """
-        conn_select=self.conn.cursor()
-        conn_select.execute("""SELECT * FROM {} INNER JOIN {} ON {}.id={}.id""".format(table_name1,table_name2,table_name1,table_name2))
-                    
+    def list_time_clocking(self, employee_table,timeclock_table):
+        """Return list all clocking times from the table given database"""
+
+        conn_select = self.conn.cursor()
+        conn_select.execute(\
+            """SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id"""\
+            .format(employee_table,\
+                timeclock_table,\
+                employee_table,\
+                timeclock_table\
+                ))
+
         return conn_select.fetchall()
 
-    def print_clocking_time(self):
-        """Print list all employees with clocking time """
-        list=self.list_clocking_time("timeclock","employee")
+    def print_time_clocking(self):
+        """Print list of all clocking time in the database """
+
+        list = self.list_time_clocking("employee","timeclock")
         for entry in list:
             print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
-                            
-            
-                            
+
+
     def register_clocking_time(self, uid):
         """Register clocking time for the user with card uid given"""
 
@@ -252,12 +260,13 @@ def __main__():
             #print list of all employees
             db.print_employee()
         elif selection == '7':
-            db.print_clocking_time()
-            #delete clocking register
+            #print list of all clococking times
+            db.print_time_clocking()
+            #delete register
             db.delete_register("timeclock")
         elif selection == '8':
-            db.print_clocking_time()
-             
+            #print list of all clococking times
+             db.print_time_clocking()
         elif selection == '0':
             break
         else:

@@ -3,6 +3,7 @@ Constantly scan looking for presence of a tag
 If a tag is found the uid is compared with a database
 and the data is sent to a google spreadsheet
 """
+#08/08/2019 version
 
 #User Modules
 from card import Card

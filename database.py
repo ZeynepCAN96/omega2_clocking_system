@@ -256,13 +256,13 @@ def __main__():
             db.print_employee()
         elif selection == '7':
 
-            db.print_time_clocking("timeclock")
+            db.print_time_clocking()
             #delete register
             db.delete_register("timeclock")
 
             #print(db.register_clocking_time('1234'))
         elif selection == '8':
-              db.print_time_clocking("timeclock")
+              db.print_time_clocking()
         elif selection == '0':
             break
         else:

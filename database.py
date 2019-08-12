@@ -140,6 +140,7 @@ class Database:
         for entry in list:
             print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
                             
+            
                             
     def register_clocking_time(self, uid):
         """Register clocking time for the user with card uid given"""

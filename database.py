@@ -147,7 +147,7 @@ class Database:
 
         list = self.list_time_clocking("employee","timeclock")
         for entry in list:
-            print(" {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
+            print(" {} - {} - {} - {} - {} - {} - {} - {} - {}".format(*entry))
 
 
     def register_clocking_time(self, uid):

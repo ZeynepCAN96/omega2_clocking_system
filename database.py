@@ -133,7 +133,7 @@ class Database:
 
         conn_select = self.conn.cursor()
         conn_select.execute(\
-            """SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id"""\
+            """SELECT * FROM {} LEFT OUTER JOIN {}  ON {}.id={}.id"""\
             .format(employee_table,\
                 timeclock_table,\
                 employee_table,\

@@ -133,7 +133,7 @@ class Database:
 
         conn_select = self.conn.cursor()
         conn_select.execute(\
-            """SELECT * FROM {} INNER JOIN {}  ON {}.id={}.id"""\
+            """SELECT * FROM {} INNER JOIN {}  ON {}.id={}.employee_id"""\
             .format(employee_table,\
                 timeclock_table,\
                 employee_table,\
@@ -147,7 +147,7 @@ class Database:
 
         list = self.list_time_clocking("employee","timeclock")
         for entry in list:
-            print(" {} - {} - {} - {} - ".format(entry[0],entry[2],entry[3],entry[11]))
+            print(" {} - {} - {} - {}".format(entry[2],entry[3],entry[8],entry[11]))
 
 
     def register_clocking_time(self, uid):

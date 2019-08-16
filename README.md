@@ -57,9 +57,11 @@ The official Python package manager, pip, is the standard way of installing Pyth
 
 We’ll need to first install pip on the Omega:
 
+
 `opkg update`
 
 `opkg install python-pip`
+
 
 ### User Setting <a name="subparagraph2"></a>
 
@@ -83,7 +85,9 @@ The NFC & RFID Expansion brings contact-less RFID and NFC communication to the O
 
 See  https://docs.onion.io/omega2-docs/using-rfid-nfc-expansion.html
 
+
 #### Installation <a name="subsubparagraph1"></a>
+
 
 To use your RFID & NFC Expansion, you’ll first need to initialize the device:
 
@@ -91,17 +95,22 @@ To use your RFID & NFC Expansion, you’ll first need to initialize the device:
 
 ` opkg install nfc-exp`
 
+
 #### Scanning RFID/NFC Tags <a name="subsubparagraph2"></a>
 
 To scan an RFID/NFC Tag, you can use the `nfc-list` utility.
 
+
 #### Using Mifare Ultralight Cards <a name="subsubparagraph3"></a>
 
+
 `nfc-mfultralight` program is used to configure the ` Mifare Ultralight `type cards. You can read from the tag and write to it.
+
 
 In order to scan the tag and store it to a file, please run the following command:
 
 ` nfc-mfultralight r mycardUltra.mfd`
+
 
 To view the content of the file, use xxd utility by using the following command:
 
@@ -116,11 +125,16 @@ The basic ways to run tests:
 
 1.Switch to Onion Omega2 screen in the terminal.
 
-2.Run the `python3 main.py`
+2.Configure file `config.py`
 
-3.Read the card to RFID expansion
+3.Run the database,set a department and create employees
 
-4.Run the `python3 database.py`
+4.Run the `main.py`
+
+5.Read the card to RFID expansion
+
+6.Run the `database.py`
+
 
 See [Running and Writing Tests](https://devguide.python.org/runtests/) for more on running tests.
 

@@ -52,7 +52,7 @@ We’ll need to first install pip on the Omega:
 User Setting
 -------------
 
-To stop the system , you'll first need to read the card :
+To stop the system , you'll first need to set up a tag for it in settings :
 
 `ID_STOP_SYSTEM = "b5c6e7bb"` *-Card id to stop the system*
 

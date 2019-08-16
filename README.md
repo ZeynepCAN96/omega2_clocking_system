@@ -25,29 +25,20 @@ the full version of python3:
 See https://docs.onion.io/omega2-docs/installing-and-using-python.html
 
 
-## Table of content
-* [How to use this?](#how-to-use-this)
-** [Quick Start](quick-start)
+:toc: macro
+:toc-title:
+:toclevels: 99
+# Title
 
-.. contents::
+toc::[]
 
-General Information
--------------------
+## How to use this?
 
-- Website: https://www.python.org
-- Source code: https://github.com/python/cpython
-- Issue tracker: https://bugs.python.org
-- Documentation: https://docs.python.org
-- Developer's Guide: https://devguide.python.org/
+### A2
 
-Contributing to CPython
------------------------
+## B
 
-For more complete instructions on contributing to CPython development,
-see the `Developer Guide`_.
-
-.. _Developer Guide: https://devguide.python.org/
-
+### B2
 
 
 # How to use this ?

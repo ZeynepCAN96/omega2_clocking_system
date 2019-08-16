@@ -1,22 +1,38 @@
 # Omega2_clocking_system
 
-# What is this ?
+## What is this ? <a name="introduction"></a>
 
-- Clocking system is a simple Python project intended to keep a check-in time and check-out time of employees in a school.
-- While creating the project, we use Omega2 + device with  RFID and NFC expansion.
+- Clocking system is a simple Python project intended to keep a check-in time and check-out time of employees in a school. 
+- While creating the project, we use Omega2 + device with  RFID and NFC expansion. 
 - We consult with Onion Omega2 documentation.
 
 See   https://docs.onion.io/omega2-docs/
 
 - This is in development.
 
-# Requirements
 
-You need Python 3 to run clocking system.
+# Table of contents
+1. [What is this ?](#introduction)
+2. [Requirements](#requirements)
+3. [How to use this ?](#paragraph2)
+    1. [Quick Start](#subparagraph1)
+    1. [Quick Start](#subparagraph2)
+	1. [Working With RFID & NFC Expansion](#subparagraph3)
+	   1.[Installation](#subsubparagraph1)
+	   2.[Scanning RFID/NFC Tags](#subsubparagraph2)
+	   3.[Using Mifare Ultralight Cards](#subsubparagraph3)
+3. [Testing](#testing)
+4. [Built With](#build)
+5. [License](#license)
+
+
+## Requirements <a name="requirements"></a>
+
+You need Python 3 to run clocking system. 
 
 To install Python3, start by updating your package manager:
 
-` opkg update`
+` opkg update` 
 
 the full version of python3:
 
@@ -24,30 +40,14 @@ the full version of python3:
 
 See https://docs.onion.io/omega2-docs/installing-and-using-python.html
 
-# Table of contents
-1. [Introduction](#introduction)
-2. [Some paragraph](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
-3. [Another paragraph](#paragraph2)
 
-## This is the introduction <a name="introduction"></a>
-Some introduction text, formatted in heading 2 style
-
-## Some paragraph <a name="paragraph1"></a>
-The first paragraph text
-
-### Sub paragraph <a name="subparagraph1"></a>
-This is a sub paragraph, formatted in heading 3 style
-
-## Another paragraph <a name="paragraph2"></a>
-The second paragraph text
+## How to use this ? <a name="paragraph2"></a>
 
 
-# How to use this ?
+
+### Quick Start <a name="subparagraph1"></a>
 
 
-Quick Start
--------------
 Get your Omega2 + up and running by following the [Omega2 + getting started guide](https://docs.onion.io/omega2-docs/first-time-setup.html).
 
 
@@ -59,13 +59,9 @@ We’ll need to first install pip on the Omega:
 
 `opkg install python-pip`
 
+### User Setting <a name="subparagraph2"></a>
 
-
-
-User Setting
--------------
-
-To stop the system , you'll first need to set up a tag for it in settings :
+To stop the system , you'll first need to read the card :
 
 `ID_STOP_SYSTEM = "b5c6e7bb"` *-Card id to stop the system*
 
@@ -78,22 +74,14 @@ To use Oled expansion , It should be 1 (ON) :
 `OLED_EXPANSION = 1`*-1 = ON or 0 = OFF*
 
 
+### Working With RFID & NFC Expansion <a name="subparagraph3"></a>
 
 
-
-
-Working With RFID & NFC Expansion
--------------
-
-The NFC & RFID Expansion brings contact-less RFID and NFC communication to the Omega ecosystem.
+The NFC & RFID Expansion brings contact-less RFID and NFC communication to the Omega ecosystem. 
 
 See  https://docs.onion.io/omega2-docs/using-rfid-nfc-expansion.html
 
-
-
-
-### Installation
-
+#### Installation <a name="subsubparagraph1"></a>
 
 To use your RFID & NFC Expansion, you’ll first need to initialize the device:
 
@@ -101,15 +89,11 @@ To use your RFID & NFC Expansion, you’ll first need to initialize the device:
 
 ` opkg install nfc-exp`
 
-
-### Scanning RFID/NFC Tags
+#### Scanning RFID/NFC Tags <a name="subsubparagraph2"></a>
 
 To scan an RFID/NFC Tag, you can use the `nfc-list` utility.
 
-
-
-
-### Using Mifare Ultralight Cards
+#### Using Mifare Ultralight Cards <a name="subsubparagraph3"></a>
 
 `nfc-mfultralight` program is used to configure the ` Mifare Ultralight `type cards. You can read from the tag and write to it.
 
@@ -122,7 +106,9 @@ To view the content of the file, use xxd utility by using the following command:
 `xxd mycardUltra.mfd`
 
 
-# Testing
+
+
+## Testing <a name="testing"></a>
 
 The basic ways to run tests:
 
@@ -133,12 +119,13 @@ The basic ways to run tests:
 
 See [Running and Writing Tests](https://devguide.python.org/runtests/) for more on running tests.
 
-# Built With
-
+## Build With  <a name="build"></a>
 
 - [Atom](https://atom.io) *- Used to edit the code*
 - [DB Browser for SQLite](https://sqlitebrowser.org) *- Used to generate the database*
 
-# License
+
+## License  <a name="license"></a>
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Panchop10/omega2_clocking_system/blob/test/LICENSE) file for details
+

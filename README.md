@@ -24,21 +24,23 @@ the full version of python3:
 
 See https://docs.onion.io/omega2-docs/installing-and-using-python.html
 
+# Table of contents
+1. [Introduction](#introduction)
+2. [Some paragraph](#paragraph1)
+    1. [Sub paragraph](#subparagraph1)
+3. [Another paragraph](#paragraph2)
 
-:toc: macro
-:toc-title:
-:toclevels: 99
-# Title
+## This is the introduction <a name="introduction"></a>
+Some introduction text, formatted in heading 2 style
 
-toc::[]
+## Some paragraph <a name="paragraph1"></a>
+The first paragraph text
 
-## How to use this?
+### Sub paragraph <a name="subparagraph1"></a>
+This is a sub paragraph, formatted in heading 3 style
 
-### A2
-
-## B
-
-### B2
+## Another paragraph <a name="paragraph2"></a>
+The second paragraph text
 
 
 # How to use this ?

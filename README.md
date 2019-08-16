@@ -27,6 +27,7 @@ See https://docs.onion.io/omega2-docs/installing-and-using-python.html
 
 ## Table of content
 * [How to use this?](#how-to-use-this)
+** [Quick Start](quick-start)
 
 
 # How to use this ?

@@ -25,12 +25,9 @@ the full version of python3:
 See https://docs.onion.io/omega2-docs/installing-and-using-python.html
 
 
-**Contents**
+## Table of content
+* [How to use this?](#how-to-use-this)
 
-[TOC]
-
-#How to use this?
-##Quick Start
 
 # How to use this ?
 
@@ -112,7 +109,6 @@ To view the content of the file, use xxd utility by using the following command:
 
 
 # Testing
--------------
 
 The basic ways to run tests:
 
@@ -124,12 +120,11 @@ The basic ways to run tests:
 See [Running and Writing Tests](https://devguide.python.org/runtests/) for more on running tests.
 
 # Built With
--------------
+
 
 - [Atom](https://atom.io) *- Used to edit the code*
 - [DB Browser for SQLite](https://sqlitebrowser.org) *- Used to generate the database*
 
 # License
--------------
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Panchop10/omega2_clocking_system/blob/test/LICENSE) file for details

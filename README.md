@@ -28,7 +28,7 @@ See https://docs.onion.io/omega2-docs/installing-and-using-python.html
 **Contents**
 
 
-__TOC__
+:toc:
 
 # How to use this ?
 

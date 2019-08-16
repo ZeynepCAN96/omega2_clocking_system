@@ -1,4 +1,4 @@
-# Omega2_clocking_system
+# Omega2 clocking system
 
 ## What is this ? <a name="introduction"></a>
 
@@ -115,8 +115,11 @@ To view the content of the file, use xxd utility by using the following command:
 The basic ways to run tests:
 
 1.Switch to Onion Omega2 screen in the terminal.
+
 2.Run the `python3 main.py`
+
 3.Read the card to RFID expansion
+
 4.Run the `python3 database.py`
 
 See [Running and Writing Tests](https://devguide.python.org/runtests/) for more on running tests.

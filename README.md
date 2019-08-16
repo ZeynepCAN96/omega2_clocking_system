@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="editormd/css/editormd.css" />
-<div id="test-editor">
-  
 # Omega2_clocking_system
 
 # What is this ?
@@ -30,8 +27,7 @@ See https://docs.onion.io/omega2-docs/installing-and-using-python.html
 
 **Contents**
 
-
-:toc:
+.. contents::
 
 # How to use this ?
 
@@ -132,16 +128,3 @@ See [Running and Writing Tests](https://devguide.python.org/runtests/) for more 
 # License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Panchop10/omega2_clocking_system/blob/test/LICENSE) file for details
-
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="editormd/editormd.min.js"></script>
-<script type="text/javascript">
-    $(function() {
-        var editor = editormd("test-editor", {
-            // width  : "100%",
-            // height : "100%",
-            path   : "editormd/lib/"
-        });
-    });
-</script>

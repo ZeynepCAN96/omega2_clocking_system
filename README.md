@@ -1,6 +1,6 @@
 # Omega2_clocking_system
 
-#What is this ?
+# What is this ?
 
 - Clocking system is a simple Python project intended to keep a check-in time and check-out time of employees in a school.
 - While creating the project, we use Omega2 + device with  RFID and NFC expansion.
@@ -10,7 +10,7 @@ See   https://docs.onion.io/omega2-docs/
 
 - This is in development.
 
-#Requirements
+# Requirements
 
 You need Python 3 to run clocking system.
 
@@ -30,7 +30,7 @@ See https://docs.onion.io/omega2-docs/installing-and-using-python.html
 
 [TOC]
 
-#How to use this ?
+# How to use this ?
 
 
 Quick Start
@@ -79,7 +79,7 @@ See  https://docs.onion.io/omega2-docs/using-rfid-nfc-expansion.html
 
 
 
-###Installation
+### Installation
 
 ----
 
@@ -90,14 +90,14 @@ To use your RFID & NFC Expansion, you’ll first need to initialize the device:
 ` opkg install nfc-exp`
 
 
-###Scanning RFID/NFC Tags
+### Scanning RFID/NFC Tags
 
 To scan an RFID/NFC Tag, you can use the `nfc-list` utility.
 
 
 
 
-###Using Mifare Ultralight Cards
+### Using Mifare Ultralight Cards
 
 `nfc-mfultralight` program is used to configure the ` Mifare Ultralight `type cards. You can read from the tag and write to it.
 
@@ -110,7 +110,7 @@ To view the content of the file, use xxd utility by using the following command:
 `xxd mycardUltra.mfd`
 
 
-#Testing
+# Testing
 
 The basic ways to run tests:
 
@@ -121,11 +121,11 @@ The basic ways to run tests:
 
 See [Running and Writing Tests](https://devguide.python.org/runtests/) for more on running tests.
 
-#Built With
+# Built With
 
 - [Atom](https://atom.io) *- Used to edit the code*
 - [DB Browser for SQLite](https://sqlitebrowser.org) *- Used to generate the database*
 
-#License
+# License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Panchop10/omega2_clocking_system/blob/test/LICENSE) file for details

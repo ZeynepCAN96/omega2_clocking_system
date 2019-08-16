@@ -29,6 +29,26 @@ See https://docs.onion.io/omega2-docs/installing-and-using-python.html
 * [How to use this?](#how-to-use-this)
 ** [Quick Start](quick-start)
 
+.. contents::
+
+General Information
+-------------------
+
+- Website: https://www.python.org
+- Source code: https://github.com/python/cpython
+- Issue tracker: https://bugs.python.org
+- Documentation: https://docs.python.org
+- Developer's Guide: https://devguide.python.org/
+
+Contributing to CPython
+-----------------------
+
+For more complete instructions on contributing to CPython development,
+see the `Developer Guide`_.
+
+.. _Developer Guide: https://devguide.python.org/
+
+
 
 # How to use this ?
 

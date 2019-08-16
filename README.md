@@ -127,13 +127,12 @@ The basic ways to run tests:
 
 2.Configure file `config.py`
 
-3.Run the database,set a department and create employees
+3.Run the `database.py` ,set a department and create employees
 
 4.Run the `main.py`
 
 5.Read the card to RFID expansion
 
-6.Run the `database.py`
 
 
 See [Running and Writing Tests](https://devguide.python.org/runtests/) for more on running tests.

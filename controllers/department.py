@@ -2,7 +2,7 @@
 
 #User Modules
 from models.department import Department
-from database import Database
+from config.database import Database
 
 class Department_Controller:
 
@@ -48,3 +48,21 @@ class Department_Controller:
 
         self.print()
         self.database.delete_register("department")
+
+    def update(self):
+        """Update department name"""
+
+        self.print()
+        id = int(input("Select the id to update: "))
+
+        #Ask user for new department name
+        dept_name = input("New department name: ")
+
+        self.db.cursor().execute("""UPDATE department
+            SET    department_name = %s
+            WHERE  department.id = %s""",\
+            (\
+                dept_name,\
+                id\
+            ))
+        self.db.commit()

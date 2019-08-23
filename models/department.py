@@ -1,7 +1,7 @@
 """Department model"""
 
 # User Modules
-from database import Database
+from config.database import Database
 
 class Department:
 

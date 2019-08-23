@@ -2,9 +2,10 @@
 
 # User Modules
 from models.timeclock import Timeclock
-from database import Database
-from config import Config
-#from oled import Oled
+from config.database import Database
+from config.config import Config
+from google_spreadsheet.gsheet import Gsheet
+from omega_expansions.oled import Oled
 
 # Python Modules
 from datetime import datetime
@@ -24,70 +25,94 @@ class Timeclock_Controller:
         self.db.close()
 
 
-    def register(self):
+    def register(self, uid):
         """Register clocking time for the user with card uid given"""
 
         conn_select = self.db.cursor()
-        rows = conn_select.execute("""\
-            SELECT id,\
-                first_name,\
-                last_name,\
-                working,\
-                updated_at\
-                FROM employee WHERE card_uid = %s""",\
-                (\
-                    uid\
-                )\
-            ).fetchone()
+        conn_select.execute("""SELECT id,\
+            first_name,\
+            last_name,\
+            working,\
+            updated_at,\
+            last_clock_register\
+            FROM employee\
+            WHERE employee.card_uid = %s""",\
+            (\
+                uid,\
+            ))
 
-        #Check if there is no employee with the given uid
+        rows = conn_select.fetchone()
+
         if(rows==None):
             oled_screen = Oled()
             oled_screen.msg_error("Employee not found")
             return 0
 
         #Calculate delay from last clocking registered
-        last_clocking = datetime.strptime(rows[4], '%Y-%m-%d %H:%M:%S.%f')
+        last_clock = datetime.strptime(str(rows[4]), '%Y-%m-%d %H:%M:%S')
         now = datetime.now()
-        delay = now - last_clocking
+        delay = now - last_clock
+
+        #Prevent wrong registers because of people forget to clockout
+
+        working = rows[3]
+
+        if((last_clock.day != now.day) and (working==1)):
+            working = 0
 
         #Check delay configured for clocking again
         if(delay.seconds < Config.DELAY_SECONDS.value):
-            #duplicate entry detected
+            duplicate entry detected
             oled_screen = Oled()
             oled_screen.msg_error(\
-                "You already registered your time, wait {} seconds"\
-                .format(Config.DELAY_SECONDS.value-delay.seconds))
-
+               "You already registered your time, wait {} seconds"\
+               .format(Config.DELAY_SECONDS.value-delay.seconds))
             return 0
 
         #Register new clocking time
         #change working status 1 -> 0 or 0 -> 1
-        working = 0 if rows[3] else 1
+        working = 0 if working else 1
 
         #Update working status in employees
         self.db.cursor().execute("""\
             UPDATE employee\
-            SET working = %s, updated_at = %s\
+            SET\
+            working = %s,\
+            updated_at = %s,\
+            last_clock_register = %s\
             WHERE id = %s""",\
             (\
                 working,\
+                now,\
                 now,\
                 rows[0]\
             ))
         self.db.commit()
 
         #Save clocking time
+        #working 1 = clock in / working 0 = clock out
         self.db.cursor().execute("""INSERT INTO timeclock\
-            VALUES (null,%s,0,%s)""",\
+            VALUES (null,%s,0,%s,%s)""",\
             (\
                 rows[0],\
-                now\
+                now,\
+                working\
             ))
         self.db.commit()
 
         oled_screen = Oled()
         oled_screen.msg_ok("{} {}".format(rows[1], rows[2]), now)
+
+        #Insert data in spreadsheet
+        gsheet = Gsheet("{}-{} {}".format(rows[0], rows[1], rows[2]))
+
+        #Convert last clocking into datetime object
+        last_clocking = rows[5]
+        if last_clocking != None:
+            last_clocking = datetime.strptime(str(rows[5]), '%Y-%m-%d %H:%M:%S')
+
+        #Insert data into spreadsheet
+        gsheet.insert_clock_register(datetime.now(), last_clocking, working)
 
         return 1
 

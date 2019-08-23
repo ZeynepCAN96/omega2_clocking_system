@@ -18,6 +18,9 @@ if __name__ == '__main__':
     menu['6']="List Employees"
     menu['7']="Delete Clocking Register"
     menu['8']="List Clocking Registers"
+    menu['9']="Update Employee's Card"
+    menu['10']="Update Employee's Name"
+    menu['11']="Update Department Name"
     menu['0']="Exit"
 
     #loop asking user for an option
@@ -54,7 +57,16 @@ if __name__ == '__main__':
             routes.delete_timeclock()
         elif selection == '8':
             #print list of all clocking times
-             routes.print_timeclock()
+            routes.print_timeclock()
+        elif selection == '9':
+            #Update employee's card
+            routes.update_employee_uid()
+        elif selection == '10':
+            #Update employee's name
+            routes.update_employee_name()
+        elif selection == '11':
+            #Update department name
+            routes.update_department()
         elif selection == '0':
             break
         else:

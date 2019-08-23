@@ -1,4 +1,8 @@
-"""General card class to get the ID of it"""
+"""Manage NFC Card expansion
+    RUN following commands in order to use it
+    opkg update
+    opkg install nfc-exp
+"""
 
 #Python Modules
 import subprocess

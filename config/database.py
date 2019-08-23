@@ -4,7 +4,7 @@
 import mysql.connector
 
 # User Modules
-from config import Config
+from config.config import Config
 
 class Database:
 

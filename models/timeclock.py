@@ -1,7 +1,7 @@
 """Timeclock model"""
 
 # User Modules
-from database import Database
+from config.database import Database
 
 class Timeclock:
 
@@ -17,6 +17,7 @@ class Timeclock:
             employee_id   INT(11) NOT NULL,
             sent          INT(11) NOT NULL,
             clocking_time DATETIME NOT NULL,
+            clock_status INT(11) NOT NULL,
             PRIMARY KEY (id),
             KEY employee_id (employee_id),
             CONSTRAINT employee_id

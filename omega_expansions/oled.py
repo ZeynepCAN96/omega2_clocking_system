@@ -1,7 +1,7 @@
 """Manage OLED expansion
     RUN following commands in order to use it
     opkg update
-    opkg install python3-light
+    opkg install python3
     opkg install python3-oled-exp
 """
 
@@ -12,7 +12,7 @@ import time as t
 from OmegaExpansion import oledExp
 
 #User Modules
-from config import Config
+from config.config import Config
 
 class Oled():
 

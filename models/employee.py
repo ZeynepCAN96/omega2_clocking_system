@@ -1,7 +1,7 @@
 """Employee model"""
 
 # User Modules
-from database import Database
+from config.database import Database
 
 class Employee:
 
@@ -21,6 +21,7 @@ class Employee:
                 working      INT(11) NOT NULL ,
                 created_at   DATETIME NOT NULL ,
                 updated_at   DATETIME NOT NULL ,
+                last_clock_register   DATETIME NULL ,
                 UNIQUE card_uid (card_uid(11)) ,
                 PRIMARY KEY (id),
                 KEY department_id (department_id),

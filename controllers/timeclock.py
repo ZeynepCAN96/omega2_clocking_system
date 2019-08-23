@@ -62,7 +62,7 @@ class Timeclock_Controller:
 
         #Check delay configured for clocking again
         if(delay.seconds < Config.DELAY_SECONDS.value):
-            duplicate entry detected
+            #duplicate entry detected
             oled_screen = Oled()
             oled_screen.msg_error(\
                "You already registered your time, wait {} seconds"\

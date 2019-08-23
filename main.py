@@ -14,21 +14,14 @@ def __main__():
     """Open nfc reader continusly until a card is read"""
 
     route = Routes()
-    print("after routes")
     while True:
-        print("enter while")
         #Read card, the constructor will search for a card until it gets one
         card = Card()
-        print("before break")
-        print(card.id)
-        print("before break")
         #break the loop if the card presented is the one configured to stop it
         if(card.id == Config.ID_STOP_SYSTEM.value):
            break
 
-        print(card.id)
         route.register_timeclock(card.id)
-        print("done")
 
 if __name__ == '__main__':
     __main__()

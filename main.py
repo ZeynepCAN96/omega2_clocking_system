@@ -24,7 +24,6 @@ def __main__():
            break
 
         route.register_timeclock(card.id)
-        break
 
 if __name__ == '__main__':
     __main__()

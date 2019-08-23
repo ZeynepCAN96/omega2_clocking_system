@@ -23,7 +23,9 @@ def __main__():
         if(card.id == Config.ID_STOP_SYSTEM.value):
            break
 
+        print(card.id)
         route.register_timeclock(card.id)
+        print("done")
 
 if __name__ == '__main__':
     __main__()

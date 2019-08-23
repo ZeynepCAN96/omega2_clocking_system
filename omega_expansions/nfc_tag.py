@@ -1,5 +1,8 @@
 """NFC Omega expansion card"""
 
+#User Modules
+from card import Card
+
 class Tag:
 
     def read_card(self):

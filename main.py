@@ -13,6 +13,9 @@ from routes import Routes
 def __main__():
     """Open nfc reader continusly until a card is read"""
 
+    #Comment to check when main started
+    print("...")
+
     route = Routes()
     while True:
         #Read card, the constructor will search for a card until it gets one
